@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import pic from './placeholder.png'
 import axios from 'axios'
+import {connect} from 'react-redux'
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
   constructor(){
     super()
     this.state ={
@@ -10,12 +11,19 @@ export default class Dashboard extends Component {
       checkbox:true,
       posts:[{post_id:1,conent:'Hello How are you doing today',photo:pic},{post_id:2,conent:'Hello How are you doing today',photo:pic},{post_id:3,conent:'Hello How are you doing today',photo:pic},{post_id:4,conent:'Hello How are you doing today',photo:pic}]
     }
+    // let {userId} = this.props
   }
+  
   getPosts(){
     axios.get('/api/posts/:id').then(res=>{
       console.log(res.data)
     })
   }
+  // searchPosts(id){
+  //   axios.put('/api/', {}).then(res=>{
+
+  //   })
+  // }
   render() {
     return (
       <div className='App'>
@@ -41,3 +49,10 @@ export default class Dashboard extends Component {
     )
   }
 }
+function mapStateToProps(state){
+  let {userId} = state
+  return {
+    userId
+  }
+}
+export default connect(mapStateToProps)(Dashboard)

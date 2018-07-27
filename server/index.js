@@ -41,13 +41,31 @@ app.get('/api/posts/:id',(req,res)=>{
   const db = req.app.get('db')
   const {search,checkbox} = req.query
   const {id} = req.params
-  db.get_posts().then(response=>{
-    //if userposts true and there is a search string return all posts where the title contains the seearch string
-
-    //if userposts is false and there is no search strings return all posts where the current user is not the author
-
-    //if userpost is false and there is a search string return all posts where current user is not author and the title   contains the search string
-  })
+  
+  db.get_posts().then(response=>{res.send(response)})
+  //   //if userposts true and there is a search string return all posts where the title contains the seearch string
+  //   if(checkbox && search){
+  //     //return all posts where title contains search string
+  //     db.user_search_post([search]).then(response=>{
+  //       res.send(response.data)
+  //     })
+  //   }else if(!checkbox && !search){
+  //     //return all post where current user is not author
+  //     db.not_user_post([id]).then(response=>{
+  //       res.send(response.data)
+  //     })
+  //   }else if(!checkbox && search){
+  //     //return all posts where current user is not author and title contains search string
+  //     db.post_search([id,search]).then(response=>{
+  //       res.send(response.data)
+  //     })
+  //   }else{
+  //     res.send(response)
+  //   }
+  //   //if userposts is false and there is no search strings return all posts where the current user is not the author
+    
+  //   //if userpost is false and there is a search string return all posts where current user is not author and the title   contains the search string
+  // })
 })
 
 

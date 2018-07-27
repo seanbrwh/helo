@@ -1,5 +1,6 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 function Nav(props){
   return (
@@ -11,4 +12,10 @@ function Nav(props){
     </div>
   )
 }
-export default withRouter(Nav)
+function mapStateToProps(state){
+  let {username,profilepic} = state
+  return{
+    username,profilepic
+  }
+}
+export default connect(mapStateToProps)(withRouter(Nav))
